@@ -27,6 +27,7 @@ write-host "*** Exchange DkimSigner Install Script ***" -f "blue"
 # Exchange 2013 SP1 CU18 (15.0.1347.2)
 # Exchange 2013 SP1 CU19 (15.0.1365.1)
 # Exchange 2013 SP1 CU20 (15.0.1367.3)
+# Exchange 2013 SP1 CU21 (15.0.1395.4)
 # Exchange 2016 Preview	 (15.1.225.17)
 # Exchange 2016 RTM	     (15.1.225.42)
 # Exchange 2016 CU1	     (15.1.396.30)
@@ -38,7 +39,8 @@ write-host "*** Exchange DkimSigner Install Script ***" -f "blue"
 # Exchange 2016 CU7	     (15.1.1261.35)
 # Exchange 2016 CU8	     (15.1.1415.2)
 # Exchange 2016 CU9	     (15.1.1466.3)
-# Exchange 2016 CU10	     (15.1.1531.3)
+# Exchange 2016 CU10	 (15.1.1531.3)
+# Exchange 2016 CU11	 (15.1.1591.10)
 
 write-host "Detecting Exchange version ... " -f "cyan"
 $hostname = hostname
@@ -99,6 +101,8 @@ if (($exchserver.admindisplayversion).major -eq 8 -and ($exchserver.admindisplay
 	$EXVER="Exchange 2013 SP1 CU19"
 } elseif (($exchserver.admindisplayversion).major -eq 15 -and ($exchserver.admindisplayversion).minor -eq 0 -and ($exchserver.admindisplayversion).build -eq 1367) {
 	$EXVER="Exchange 2013 SP1 CU20"
+} elseif (($exchserver.admindisplayversion).major -eq 15 -and ($exchserver.admindisplayversion).minor -eq 0 -and ($exchserver.admindisplayversion).build -eq 1395) {
+	$EXVER="Exchange 2013 SP1 CU21"
 } elseif (($exchserver.admindisplayversion).major -eq 15 -and ($exchserver.admindisplayversion).minor -eq 1 -and ($exchserver.admindisplayversion).build -eq 225 -and ($exchserver.admindisplayversion).revision -eq 17) {
 	$EXVER="Exchange 2016 Preview"
 } elseif (($exchserver.admindisplayversion).major -eq 15 -and ($exchserver.admindisplayversion).minor -eq 1 -and ($exchserver.admindisplayversion).build -eq 225 -and ($exchserver.admindisplayversion).revision -eq 42) {
@@ -124,6 +128,8 @@ if (($exchserver.admindisplayversion).major -eq 8 -and ($exchserver.admindisplay
 	$EXVER="Exchange 2016 CU9"
 } elseif (($exchserver.admindisplayversion).major -eq 15 -and ($exchserver.admindisplayversion).minor -eq 1 -and ($exchserver.admindisplayversion).build -eq 1531) {
 	$EXVER="Exchange 2016 CU10"
+} elseif (($exchserver.admindisplayversion).major -eq 15 -and ($exchserver.admindisplayversion).minor -eq 1 -and ($exchserver.admindisplayversion).build -eq 1591) {
+	$EXVER="Exchange 2016 CU11"
 } else {
 	throw "The exchange version is not yet supported: " + $exchserver.admindisplayversion
 }
